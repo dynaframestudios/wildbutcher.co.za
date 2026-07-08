@@ -9,9 +9,21 @@ body {
 
 }
 
-nav {
+.navbar {
     background-color: #333;
     color: #fff;
     padding: 10px;
+    padding: 10px 0;
+}
+
+.lin {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.links {
+
+
 }
 
