@@ -270,7 +270,7 @@ body.nav-open {
   .nav-backdrop {
     
     position: fixed;
-    
+
     inset: 0;
     z-index: 100;
     background: rgba(0, 0, 0, 0.45);
@@ -946,4 +946,33 @@ body.nav-open {
       pointer-events: auto;
     }
   }
+}
+
+.btn.btn-ghost{
+
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--bone);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+
+}
+
+.btn.btn-ghost:hover {
+  background-color: rgba(217, 122, 43, 0.12);
+  border-color: var(--ember);
+  color: var(--ember);
+}
+
+.btn.btn-primary {
+  background-color: var(--ember);
+  color: var(--charcoal);
+  border: 1px solid rgba(217, 122, 43, 0.35);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn.btn-primary:hover {
+  background-color: #e8934c;
+  color: var(--charcoal);
+  border-color: rgba(217, 122, 43, 0.35);
 }
