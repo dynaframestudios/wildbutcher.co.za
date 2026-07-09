@@ -268,12 +268,14 @@ body.nav-open {
   }
 
   .nav-backdrop {
-    display: block;
+    
     position: fixed;
+    
     inset: 0;
     z-index: 100;
-    background: rgba(0, 0, 0, 0.58);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -768,7 +770,8 @@ body.nav-open {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(27, 24, 21, 0.96), rgba(37, 31, 26, 0.92));
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
 
   &-inner {
@@ -930,8 +933,9 @@ body.nav-open {
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(0, 0, 0, 0.58);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.45);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
