@@ -7,12 +7,12 @@
 
 /* ---------- Design Tokens ---------- */
 :root {
-  --charcoal: #1b1815;        /* page background — warm near-black, not pure black */
+  --charcoal: #170b02;        /* page background — warm near-black, not pure black */
   --charcoal-2: #251f1a;      /* card / panel background, one step lighter */
   --charcoal-3: #322a22;      /* borders and hairlines on dark surfaces */
   --bone: #f2ead9;            /* primary text on dark backgrounds */
   --bone-dim: #cabfa8;        /* secondary / muted text on dark backgrounds */
-  --ember: #d97a2b;           /* primary accent — the glow of the fire */
+  --ember: #d0874a;           /* primary accent — the glow of the fire */
   --ember-deep: #8a4413;      /* darker ember for hovers and depth */
   --brass: #a68a55;           /* secondary accent — dividers, small labels */
 
