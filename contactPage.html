@@ -1,23 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContactPage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Wild Butcher</title>
+<meta name="description" content="Visit, call, or write to Wild Butcher. Locally sourced wild kudu biltong, wors, and steak — order ahead or stop by the shop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html#top" class="nav-brand">WILD<span>BUTCHER</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="siteNav">
+        <button class="nav-close" type="button" aria-label="Close navigation">&times;</button>
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="contactPage.html" class="nav-links--active">Contact</a>
+      </nav>
+      <a href="tel:0796759016" class="nav-cta">079 675 9016</a>
+    </div>
+  </header>
+  <div class="nav-backdrop" aria-hidden="true"></div>
 
+  <!-- CONTACT HERO -->
+  <section id="top" class="hero">
+    <p class="eyebrow">Get in touch</p>
+    <h1 class="hero-title">Order<br>Ahead</h1>
+    <p class="hero-tag">Call, write, or drop by the shop. Tell us how much you need and we'll have it cut, weighed, and waiting for you.</p>
+    <div class="hero-actions">
+      <a href="tel:0796759016" class="btn btn-primary">079 675 9016</a>
+      <a href="#form" class="btn btn-ghost">Send a message</a>
+    </div>
+  </section>
 
-    <nav    class="navbar">
+  <!-- INFO + MAP -->
+  <section class="section">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--dark">Find us</p>
+      <h2>Visit the shop</h2>
+    </div>
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="contactPage.html">Contact</a></li>
-        </ul>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Address</h3>
+        <p>12 Kudu Street<br>Honeydew, Johannesburg<br>2040</p>
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="info-link">Get directions</a>
+      </div>
 
-    </nav>
+      <div class="info-card">
+        <h3>Phone</h3>
+        <p>Best way to place a bulk order or ask what's in stock today.</p>
+        <a href="tel:0796759016" class="info-link">079 675 9016</a>
+      </div>
 
-    
+      <div class="info-card">
+        <h3>Opening hours</h3>
+        <p>Mon – Fri: 08:00 – 17:30<br>Saturday: 08:00 – 14:00<br>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps?q=Honeydew%2C%20Johannesburg&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing Wild Butcher location in Honeydew, Johannesburg">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="form" class="section">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--dark">Order form</p>
+      <h2>Send us your order</h2>
+    </div>
+
+    <form class="contact-form" id="orderForm">
+      <div class="form-row">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="079 000 0000" required>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+      </div>
+
+      <div class="form-row">
+        <label for="product">What do you need</label>
+        <select id="product" name="product" required>
+          <option value="" disabled selected>Choose a product</option>
+          <option value="biltong">Biltong</option>
+          <option value="droewors">Droëwors</option>
+          <option value="wors">Wors</option>
+          <option value="steak">Steak</option>
+          <option value="braai">Braai pack</option>
+          <option value="stew">Stew meat</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Order details</label>
+        <textarea id="message" name="message" placeholder="How many kilograms, and when would you like to collect?" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Send order</button>
+      <p class="form-note">We'll call you back to confirm quantity and collection time.</p>
+
+      <div class="form-success" id="formSuccess">Order received — we'll call you shortly to confirm.</div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-title">Wild Butcher</h2>
+      <p class="footer-sub">Locally sourced, naturally lean, premium wild kudu.</p>
+      <a href="tel:0796759016" class="btn btn-primary btn-large">079 675 9016</a>
+      <p class="footer-fine">Wild Butcher · Est 2022 · 12 Kudu Street, Honeydew, Johannesburg</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav-toggle');
+    const closeButton = document.querySelector('.nav-close');
+    const backdrop = document.querySelector('.nav-backdrop');
+
+    if (nav && toggle) {
+      const setMenuState = (isOpen) => {
+        nav.classList.toggle('is-open', isOpen);
+        document.body.classList.toggle('nav-open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      toggle.addEventListener('click', () => setMenuState(!nav.classList.contains('is-open')));
+      if (closeButton) {
+        closeButton.addEventListener('click', () => setMenuState(false));
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', () => setMenuState(false));
+      }
+      document.querySelectorAll('.nav-links a').forEach((link) => {
+        link.addEventListener('click', () => setMenuState(false));
+      });
+    }
+
+    // Simple front-end confirmation only — no server is wired up yet.
+    // A backend developer or a service like Formspree/Netlify Forms
+    // would be needed to actually receive these messages by email.
+    document.getElementById('orderForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').classList.add('is-visible');
+      this.reset();
+    });
+  </script>
+
 </body>
 </html>

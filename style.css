@@ -1,29 +1,790 @@
+/* ==========================================================================
+   WILD BUTCHER — "Smokehouse at Dusk" theme
+   A dark, ember-lit palette meant to feel like meat curing in a smokehouse,
+   with the fire still glowing underneath. Stamped headlines, a hand-marked
+   chalkboard accent, and a rotated quality-stamp badge as the signature mark.
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --charcoal: #1b1815;        /* page background — warm near-black, not pure black */
+  --charcoal-2: #251f1a;      /* card / panel background, one step lighter */
+  --charcoal-3: #322a22;      /* borders and hairlines on dark surfaces */
+  --bone: #f2ead9;            /* primary text on dark backgrounds */
+  --bone-dim: #cabfa8;        /* secondary / muted text on dark backgrounds */
+  --ember: #d97a2b;           /* primary accent — the glow of the fire */
+  --ember-deep: #8a4413;      /* darker ember for hovers and depth */
+  --brass: #a68a55;           /* secondary accent — dividers, small labels */
+
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;   /* stamped headline face */
+  --font-script: 'Caveat', cursive;                       /* hand-marked chalk accent */
+  --font-body: 'Work Sans', -apple-system, sans-serif;    /* readable body copy */
+
+  --focus-ring: 3px solid var(--ember);
+  --radius: 6px;
+}
+
+/* ---------- Global Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--charcoal);
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-
-
-
-
+  font-family: var(--font-body);
+  background-color: var(--charcoal);
+  color: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0 1.5rem;
+  line-height: 1.6;
 }
 
-.navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    padding: 10px 0;
+a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.lin {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
+h1, h2, h3 { font-family: var(--font-display); }
+
+/* ---------- Structural Layout ---------- */
+.nav, .hero, .section, .footer {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.links {
+/* ---------- Navigation ---------- */
+.nav {
+  border-bottom: 1px solid var(--charcoal-3);
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
 
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
 
+  &-brand {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    word-break: break-word;
+    color: var(--bone);
+
+    span { color: var(--ember); }
+  }
+
+  &-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+
+    a {
+      color: var(--bone-dim);
+      transition: color 0.15s ease;
+
+      &:hover,
+      &.nav-links--active {
+        color: var(--ember);
+      }
+
+      &:focus-visible {
+        outline: var(--focus-ring);
+        outline-offset: 4px;
+      }
+    }
+
+    @media (max-width: 640px) { display: none; }
+  }
+
+  &-cta {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ember);
+    border-bottom: 2px solid var(--ember);
+    padding-bottom: 2px;
+
+    &:hover { color: var(--bone); border-color: var(--bone); }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 4px;
+    }
+  }
 }
 
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(4rem, 10vw, 7rem) 0;
+  border-bottom: 1px solid var(--charcoal-3);
+  position: relative;
+
+  &-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.25rem, 11vw, 6.5rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    color: var(--bone);
+    margin-bottom: 1.75rem;
+    word-break: break-word;
+  }
+
+  &-tag {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    color: var(--bone-dim);
+  }
+
+  &-actions {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Hand-marked chalk accent, used sparingly for a single word or short phrase */
+.eyebrow {
+  font-family: var(--font-script);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 1.35rem;
+  color: var(--ember);
+  margin-bottom: 0.5rem;
+
+  &--dark { color: var(--brass); }
+  &--light { color: var(--bone-dim); }
+}
+
+/* ---------- Quality Stamp (signature element) ----------
+   A rotated, dashed-ring badge referencing the ink stamps used
+   on cured meat packaging. Use sparingly — one per page, max. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 2px dashed var(--ember);
+  color: var(--ember);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  line-height: 1.2;
+  padding: 0.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0.95rem 2.25rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  user-select: none;
+
+  &-primary {
+    background-color: var(--ember);
+    color: var(--charcoal);
+
+    &:hover { background-color: #e8934c; }
+
+    &:active { transform: scale(0.98); }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 4px;
+    }
+  }
+
+  &-ghost {
+    background-color: transparent;
+    color: var(--bone);
+    border-color: var(--charcoal-3);
+
+    &:hover {
+      border-color: var(--ember);
+      color: var(--ember);
+    }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 4px;
+    }
+  }
+
+  &-large {
+    font-size: 1.35rem;
+    padding: 1.15rem 2.75rem;
+  }
+}
+
+/* ---------- Section Common ---------- */
+.section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--charcoal-3);
+
+  &-head {
+    margin-bottom: 3.5rem;
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+      text-transform: uppercase;
+      letter-spacing: 0.005em;
+      line-height: 1.05;
+      color: var(--bone);
+    }
+
+    &--light h2 { color: var(--bone); }
+  }
+}
+
+/* ---------- The Cuts (Product Grid) ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--charcoal-2);
+
+  &--feature {
+    background-color: var(--ember);
+    border-color: var(--ember);
+
+    h3 { color: var(--charcoal); }
+    p { color: rgba(27, 24, 21, 0.75); }
+
+    .price-tag {
+      color: var(--charcoal);
+      border-top-color: rgba(27, 24, 21, 0.2);
+
+      small { color: rgba(27, 24, 21, 0.6); }
+    }
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+    color: var(--bone);
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 2.25rem;
+    flex-grow: 1;
+    color: var(--bone-dim);
+  }
+}
+
+.price-tag {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ember);
+  border-top: 1px solid var(--charcoal-3);
+  padding-top: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  line-height: 1;
+
+  &--muted { color: var(--bone); }
+
+  small {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ---------- Daily Board (Pricing Panel) ---------- */
+.pricing-panel {
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  background-color: var(--charcoal-2);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricing-hero-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 2.25rem;
+
+  .script {
+    font-family: var(--font-script);
+    font-size: 1.4rem;
+    color: var(--brass);
+  }
+}
+
+.pricing-divider {
+  border-top: 1px dashed var(--charcoal-3);
+  margin-bottom: 2.25rem;
+}
+
+.big-price {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 9vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ember);
+
+  small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--bone-dim);
+    margin-top: 0.6rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+}
+
+.pricing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  text-align: left;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: var(--bone);
+
+  .dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--brass);
+    margin: 0 0.75rem;
+    transform: translateY(-4px);
+  }
+
+  span:last-child {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--ember);
+  }
+}
+
+.pricing-note {
+  margin-top: 2.25rem;
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+}
+
+/* ---------- Gallery ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-tile {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(135deg, var(--charcoal-2), var(--charcoal-2) 10px, var(--charcoal-3) 10px, var(--charcoal-3) 20px);
+}
+
+/* ---------- Torn Edge Divider ---------- */
+.torn-edge {
+  height: 14px;
+  max-width: 1000px;
+  margin: -1px auto 0;
+  background: linear-gradient(-45deg, var(--charcoal) 8px, transparent 0), linear-gradient(45deg, var(--charcoal) 8px, transparent 0);
+  background-size: 16px 16px;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+/* ---------- Contact / Info Cards ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.info-card {
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  background-color: var(--charcoal-2);
+  padding: 2rem;
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+    color: var(--bone);
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--bone-dim);
+  }
+
+  a.info-link {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--ember);
+    border-bottom: 1px solid var(--ember);
+
+    &:hover { color: #e8934c; border-color: #e8934c; }
+  }
+}
+
+.map-frame {
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 360px;
+    border: 0;
+    filter: grayscale(0.3) invert(0.92) contrast(0.9);
+  }
+}
+
+/* ---------- Order Form ---------- */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--bone-dim);
+  }
+
+  input, textarea, select {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--charcoal-3);
+    border-radius: var(--radius);
+    background-color: var(--charcoal-2);
+    color: var(--bone);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+
+    &::placeholder { color: #7d7263; }
+
+    &:focus { outline: none; border-color: var(--ember); }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 2px;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+  text-align: center;
+}
+
+.form-success {
+  display: none;
+  border: 1px solid var(--ember);
+  border-radius: var(--radius);
+  background-color: rgba(217, 122, 43, 0.12);
+  color: var(--ember);
+  padding: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  &.is-visible { display: block; }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  text-align: center;
+
+  &-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    color: var(--bone);
+  }
+
+  &-sub {
+    font-family: var(--font-script);
+    font-size: 1.3rem;
+    color: var(--ember);
+    margin-bottom: 2rem;
+  }
+
+  &-fine {
+    margin-top: 3.5rem;
+    font-size: 0.8rem;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ---------- Refined Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0.9rem;
+  z-index: 100;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(27, 24, 21, 0.96), rgba(37, 31, 26, 0.92));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &-brand {
+    position: relative;
+    z-index: 2;
+  }
+
+  &-links {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    margin-left: auto;
+    margin-right: 1rem;
+
+    a {
+      position: relative;
+      padding: 0.3rem 0;
+      color: var(--bone-dim);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.25rem;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ember);
+        transition: width 0.2s ease;
+      }
+
+      &:hover::after,
+      &.nav-links--active::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(217, 122, 43, 0.35);
+    border-radius: 999px;
+    background: rgba(217, 122, 43, 0.12);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  &-toggle,
+  &-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: var(--bone);
+    cursor: pointer;
+  }
+
+  &-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 0.22rem;
+    flex-direction: column;
+
+    span {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--bone);
+      display: block;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--bone-dim);
+  }
+
+  &-backdrop {
+    display: none;
+  }
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  .nav {
+    top: 0.75rem;
+    border-radius: 1.2rem;
+    padding: 0.8rem 1rem;
+
+    &-inner {
+      flex-wrap: nowrap;
+    }
+
+    &-toggle {
+      display: inline-flex;
+      margin-left: auto;
+    }
+
+    &-cta {
+      display: none;
+    }
+
+    &-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(82vw, 320px);
+      margin: 0;
+      padding: 4.5rem 1.4rem 1.4rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+      border-left: 1px solid var(--charcoal-3);
+      background: linear-gradient(180deg, rgba(27, 24, 21, 0.98), rgba(37, 31, 26, 0.98));
+      box-shadow: -12px 0 36px rgba(0, 0, 0, 0.35);
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      z-index: 110;
+
+      a {
+        width: 100%;
+        padding: 0.95rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    &.is-open .nav-links {
+      transform: translateX(0);
+    }
+
+    &-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.58);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    &.is-open + .nav-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
