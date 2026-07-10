@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Wild Butcher</title>
+<meta name="description" content="Kudu and pork price list from Wild Butcher — wors, steak, biltong, chops, ribs and more. Tap any product for details and price per kilogram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html#top" class="nav-brand">WILD<span>BUTCHER</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="siteNav">
+        <button class="nav-close" type="button" aria-label="Close navigation">&times;</button>
+        <a href="index.html">Home</a>
+        <a href="products.html" class="nav-links--active">Products</a>
+        <a href="contactPage.html">Contact</a>
+      </nav>
+      <a href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order" class="nav-cta">079 675 9016</a>
+    </div>
+  </header>
+  <div class="nav-backdrop" aria-hidden="true"></div>
+
+  <section id="top" class="hero">
+    <p class="eyebrow">Price list</p>
+    <h1 class="hero-title">Our<br>Products</h1>
+    <p class="hero-tag">Wild kudu and free-range pork, cut fresh to order. Tap any product below to see the description and price per kilogram.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order" class="btn btn-primary">WhatsApp an order</a>
+      <a href="contactPage.html#form" class="btn btn-ghost">Send a message</a>
+    </div>
+  </section>
+
+  <section class="category-section">
+    <div class="category-head">
+      <h2>Kudu / Game meat</h2>
+      <p>Locally sourced, naturally lean wild kudu, cut and dried the traditional way.</p>
+    </div>
+    <div class="tile-grid" id="kuduGrid"></div>
+  </section>
+
+
+  <section class="category-section">
+    <div class="category-head">
+      <h2>Pig</h2>
+      <p>Fresh pork cuts, from ribs and chops to tenderloin and belly.</p>
+    </div>
+    <div class="tile-grid" id="pigGrid"></div>
+  </section>
+
+  
+  <footer id="contact" class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-title">Order your meat</h2>
+      <p class="footer-sub">Call ahead so it's ready when you get here.</p>
+      <a href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order" class="btn btn-primary btn-large">079 675 9016</a>
+      <p class="footer-fine">Wild Butcher · Est 2022 · Locally sourced, naturally lean, premium wild kudu &amp; pork.</p>
+    </div>
+  </footer>
+
+
+  <div class="detail-backdrop" id="detailBackdrop" aria-hidden="true"></div>
+  <div class="detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailName">
+    <button class="detail-close" type="button" aria-label="Close details">&times;</button>
+    <div class="detail-media">
+    <img src="" alt="Product image" id="detailImage">
+    </div>
+    <p class="detail-category"></p>
+    <h3 class="detail-name" id="detailName"></h3>
+    <p class="detail-desc"></p>
+    <div class="detail-price">
+      <span class="detail-price-value"></span>
+      <small>per kg</small>
+    </div>
+    <a href="#" class="btn btn-primary detail-order-link" target="_blank" rel="noopener">Order on WhatsApp</a>
+  </div>
+
+  <a
+    href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.62 4.55 1.7 6.46L4 29l7.68-1.66a12.9 12.9 0 0 0 4.34.75h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3zm0 21.98h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-3.8.82.83-3.72-.24-.38a9.9 9.9 0 0 1-1.53-5.06c0-5.5 4.48-9.98 10-9.98 2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 0 1 2.93 7.07c0 5.5-4.48 9.94-9.78 9.94zm5.46-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.9-2.2-.24-.58-.48-.5-.67-.5-.17 0-.37-.03-.57-.03-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.16 4.55.72.3 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <script src="navDrawer.js"></script>
+  <script src="script.js"></script>
+  <script src="products.js"></script>
+
+</body>
+</html>

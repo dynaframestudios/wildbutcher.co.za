@@ -20,9 +20,7 @@
       <nav class="nav-links" id="siteNav">
         <button class="nav-close" type="button" aria-label="Close navigation">&times;</button>
         <a href="index.html" class="nav-links--active">Home</a>
-        <a href="#products">Products</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#gallery">Gallery</a>
+        <a href="products.html">Products</a>
         <a href="contactPage.html">Contact</a>
       </nav>
         <a href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order" class="nav-cta">079 675 9016</a>
@@ -38,13 +36,13 @@
       <h1 class="hero-title">WILD<br>BUTCHER</h1>
       <p class="hero-tag">Locally sourced and naturally lean, premium wild kudu — cut, dried and delivered the way biltong is meant to be made.</p>
       <div class="hero-actions">
-        <a href="#pricing" class="btn btn-primary">See prices</a>
+        <a href="products.html" class="btn btn-primary">See prices</a>
         <a href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order" class="btn btn-ghost">Call to order</a>
       </div>
     </div>
     <div class="torn-edge torn-edge--bottom" aria-hidden="true"></div>
   </section>
-
+  
   <!-- PRODUCTS -->
   <section id="products" class="section products">
     <div class="section-head">
@@ -129,22 +127,33 @@
       <p class="pricing-note">All cuts other than biltong start from R50 per kilogram — call for current availability and bulk orders.</p>
     </div>
   </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="section gallery">
+  <!-- SEE OUR PRODUCTS CTA -->
+  <section class="section">
     <div class="section-head">
-      <p class="eyebrow eyebrow--dark">In the shop</p>
-      <h2>Hung, cut, and ready</h2>
+      <p class="eyebrow eyebrow--dark">What we cut</p>
+      <h2>From the whole animal to your braai</h2>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-tile g1"></div>
-      <div class="gallery-tile g2"></div>
-      <div class="gallery-tile g3"></div>
-      <div class="gallery-tile g4"></div>
-      <div class="gallery-tile g5"></div>
-      <div class="gallery-tile g6"></div>
-    </div>
+    <p style="color: var(--bone-dim); max-width: 500px; margin-bottom: 2rem;">
+      Wild kudu and free-range pork, cut fresh to order — wors, steak, biltong, chops, ribs and more.
+    </p>
+    <a href="products.html" class="btn btn-primary">View our full price list</a>
   </section>
+
+ <!-- GALLERY -->
+<section id="gallery" class="section gallery">
+  <div class="section-head">
+    <p class="eyebrow eyebrow--dark">In the shop</p>
+    <h2>Hung, cut, and ready</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile" style="background-image: url('image1.jpeg');"></div>
+    <div class="gallery-tile" style="background-image: url('image2.jpeg');"></div>
+    <div class="gallery-tile" style="background-image: url('image3.jpeg');"></div>
+    <div class="gallery-tile" style="background-image: url('image4.jpeg');"></div>
+    <div class="gallery-tile" style="background-image: url('image5.jpeg');"></div>
+    <div class="gallery-tile" style="background-image: url('image6.jpeg');"></div>
+  </div>
+</section>
 
   <div class="torn-edge torn-edge--bottom torn-edge--dark" aria-hidden="true"></div>
 
@@ -158,7 +167,20 @@
     </div>
   </footer>
 
+<!--Whatsapp button-->
+  <a
+    href="https://wa.me/27796759016?text=Hello%20Wild%20Butcher%2C%20I%20would%20like%20to%20place%20an%20order"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.62 4.55 1.7 6.46L4 29l7.68-1.66a12.9 12.9 0 0 0 4.34.75h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3zm0 21.98h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-3.8.82.83-3.72-.24-.38a9.9 9.9 0 0 1-1.53-5.06c0-5.5 4.48-9.98 10-9.98 2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 0 1 2.93 7.07c0 5.5-4.48 9.94-9.78 9.94zm5.46-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.9-2.2-.24-.58-.48-.5-.67-.5-.17 0-.37-.03-.57-.03-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.16 4.55.72.3 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
   <script src="navDrawer.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

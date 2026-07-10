@@ -292,6 +292,10 @@ body.nav-open {
   padding: clamp(4rem, 10vw, 7rem) 0;
   border-bottom: 1px solid var(--charcoal-3);
   position: relative;
+  background-image: linear-gradient(180deg, rgba(23, 11, 2, 0.6), rgba(23, 11, 2, 0.88)), url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   &-title {
     font-family: var(--font-display);
@@ -976,3 +980,419 @@ body.nav-open {
   color: var(--charcoal);
   border-color: rgba(217, 122, 43, 0.35);
 }
+/* ==========================================================================
+   PRODUCTS PAGE
+   ========================================================================== */
+
+/* ---------- Category Sections ---------- */
+.category-section {
+  padding: clamp(3rem, 7vw, 5rem) 0;
+  border-bottom: 1px solid var(--charcoal-3);
+}
+
+.category-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    text-transform: uppercase;
+    color: var(--bone);
+    line-height: 1;
+  }
+
+  p {
+    color: var(--bone-dim);
+    font-size: 0.95rem;
+    max-width: 320px;
+  }
+}
+
+/* ---------- Product Tile Grid ---------- */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-tile {
+  position: relative;
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--charcoal-2);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.product-tile:hover,
+.product-tile:focus-visible {
+  border-color: var(--ember);
+  transform: translateY(-3px);
+}
+
+.product-tile:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.tile-media {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  position: relative;
+}
+
+.tile-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 11, 2, 0) 45%, rgba(23, 11, 2, 0.85) 100%);
+}
+
+.tile-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.tile-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1.1;
+}
+
+.tile-hint {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* Swatch gradients (stand-ins until photography is ready) */
+.swatch-biltong    { background: linear-gradient(135deg, #6b3419, #a6672f); }
+.swatch-droewors   { background: linear-gradient(135deg, #5a2e17, #8a4413); }
+.swatch-wors       { background: linear-gradient(135deg, #7a3d1e, #c07a3a); }
+.swatch-stewmince  { background: linear-gradient(135deg, #4f2a17, #86532b); }
+.swatch-tbone      { background: linear-gradient(135deg, #7d3f22, #b8703c); }
+.swatch-chuck      { background: linear-gradient(135deg, #5c3018, #93582c); }
+.swatch-bones      { background: linear-gradient(135deg, #46281a, #74452a); }
+.swatch-steak      { background: linear-gradient(135deg, #6e3720, #a86636); }
+.swatch-porkribs   { background: linear-gradient(135deg, #7a4a3a, #c98a5e); }
+.swatch-porkstew   { background: linear-gradient(135deg, #6a4433, #a4735a); }
+.swatch-porkchops  { background: linear-gradient(135deg, #85543f, #d19a6d); }
+.swatch-porktender { background: linear-gradient(135deg, #99715a, #e0b48a); }
+.swatch-trotter    { background: linear-gradient(135deg, #573a2c, #8a6045); }
+.swatch-porksteak  { background: linear-gradient(135deg, #7d5340, #cc9269); }
+
+/* ---------- Detail Panel ---------- */
+.detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.detail-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 201;
+  width: min(420px, 100%);
+  background: linear-gradient(180deg, rgba(27, 24, 21, 0.99), rgba(37, 31, 26, 0.99));
+  border-left: 1px solid var(--charcoal-3);
+  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.35);
+  padding: 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  overflow-y: auto;
+}
+
+.detail-panel.is-open {
+  transform: translateX(0);
+}
+
+.detail-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--charcoal-3);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--bone-dim);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+
+.detail-close:hover { color: var(--ember); border-color: var(--ember); }
+
+.detail-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+
+.detail-category {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--brass);
+  margin-bottom: 0.35rem;
+}
+
+.detail-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1.05;
+  margin-bottom: 0.9rem;
+}
+
+.detail-desc {
+  color: var(--bone-dim);
+  font-size: 0.98rem;
+  margin-bottom: 1.75rem;
+}
+
+.detail-price {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  color: var(--ember);
+  border-top: 1px solid var(--charcoal-3);
+  padding-top: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  line-height: 1;
+  margin-bottom: 1.75rem;
+
+  small {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 85vh;
+    border-left: 0;
+    border-top: 1px solid var(--charcoal-3);
+    border-radius: 1.2rem 1.2rem 0 0;
+    box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.35);
+    transform: translateY(100%);
+  }
+
+  .detail-panel.is-open {
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Floating WhatsApp Button ---------- */
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #25d366;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float {
+    right: 1rem;
+    bottom: 1rem;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+/* ---------- Product tile images ---------- */
+.product-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-tile:hover img {
+  transform: scale(1.02);
+}
+
+/* Overlay gradient on the image (for readability) */
+.product-tile .tile-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 1rem 1rem;
+  background: linear-gradient(0deg, rgba(23,11,2,0.85) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Detail panel image ---------- */
+.detail-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: var(--charcoal-2);
+}
+
+.detail-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Gallery tiles (index.html) ---------- */
+.gallery-tile {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* assign images 1–4 to g1–g4, repeat for g5–g6 */
+.g1 { background-image: url('image1.jpeg'); }
+.g2 { background-image: url('image2.jpeg'); }
+.g3 { background-image: url('image3.jpeg'); }
+.g4 { background-image: url('image4.jpeg'); }
+.g5 { background-image: url('image1.jpeg'); }
+.g6 { background-image: url('image2.jpeg'); }
+/* Product tile images */
+.product-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-tile:hover img {
+  transform: scale(1.02);
+}
+
+/* Overlay for tile text */
+.product-tile .tile-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 1rem 1rem;
+  background: linear-gradient(0deg, rgba(23,11,2,0.85) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Detail panel image */
+.detail-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: var(--charcoal-2);
+}
+
+.detail-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ---------- Gallery ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-tile {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--charcoal-3);
+  border-radius: var(--radius);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} 
+.g1 { background-image: url('image1.jpeg'); }
+.g2 { background-image: url('image2.jpeg'); }
+.g3 { background-image: url('image3.jpeg'); }
+.g4 { background-image: url('image4.jpeg'); }
+.g5 { background-image: url('image5.jpeg'); }
+.g6 { background-image: url('image6.jpeg'); }
